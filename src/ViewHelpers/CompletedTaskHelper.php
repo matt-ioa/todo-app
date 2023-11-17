@@ -8,10 +8,10 @@ class CompletedTaskHelper
         $output = '';
         foreach ($tasks as $task) {
             $id = $task['id'];
-           $output .= '<form method="POST" class="task" action="tasks/' . $task['id'] . '"><div>'
+           $output .= '<form method="POST" class="task" action="tasks/' . $task['id'] . '"><div class="task-label">'
                . $task['message']
                . '<input type="hidden" name="_method" value="DELETE">'
-               . '<input type="submit" value="Delete">'
+               . '<input class="done-button" type="submit" value="Delete">'
                . '</div>'
             . '</form>';
         }
