@@ -2,32 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Slim 4</title>
-    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            margin: 50px 0 0 0;
-            padding: 0;
-            width: 100%;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            text-align: center;
-            color: #aaa;
-            font-size: 18px;
-        }
-
-        h1 {
-            color: #719e40;
-            letter-spacing: -3px;
-            font-family: 'Lato', sans-serif;
-            font-size: 100px;
-            font-weight: 200;
-            margin-bottom: 0;
-        }
-    </style>
+    <title>Todo App</title>
 </head>
 <body>
-<h1>Slim</h1>
-<div>a microframework for PHP</div>
-    <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
+<h1>TODO App</h1>
+<form action="/tasks" method="POST">
+    <label for="message">Add task:</label>
+    <input id="message" type="text" name="message">
+    <input type="submit" value="Add">
+</form>
+<div id="task-list">
+    <?php
+    echo \App\ViewHelpers\TaskHelper::renderTasks($tasks);
+    ?>
+</div>
+<div id="completed-link">
+    <a href="completed">Show completed tasks</a>
+</div>
 </body>
 </html>
