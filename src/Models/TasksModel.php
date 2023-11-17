@@ -47,7 +47,7 @@ class TasksModel
     public function getUncompletedTasks(): array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `message`, `done`, `created` FROM tasks WHERE `done` = 0'
+            'SELECT `id`, `message`, `done`, `created` FROM tasks WHERE `done` = 0 ORDER BY `created` DESC'
         );
 
         $query->execute();
@@ -57,7 +57,7 @@ class TasksModel
     public function getCompletedTasks(): array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `message`, `done`, `created` FROM tasks WHERE `done` = 1'
+            'SELECT `id`, `message`, `done`, `created` FROM tasks WHERE `done` = 1 ORDER BY `created` DESC'
         );
 
         $query->execute();
