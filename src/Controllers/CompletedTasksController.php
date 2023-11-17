@@ -11,7 +11,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\PhpRenderer;
 
-class TasksAPIController
+class CompletedTasksController
 {
     private TasksModel $model;
     private PhpRenderer $renderer;
@@ -25,8 +25,8 @@ class TasksAPIController
 
     public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $tasks = $this->model->getUncompletedTasks();
+        $tasks = $this->model->getCompletedTasks();
 
-        return $this->renderer->render($response, 'index.php', ['tasks' => $tasks]);
+        return $this->renderer->render($response, 'completed.php', ['tasks' => $tasks]);
     }
 }

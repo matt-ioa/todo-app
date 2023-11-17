@@ -6,23 +6,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div id="container">
 <h1>TODO List</h1>
-<form action="/tasks" method="POST">
-    <label for="message">Add task:</label>
-    <input id="message" type="text" name="message">
-    <input type="submit" value="Add">
-</form>
-<div id="task-list">
+<h2>Edit task</h2>
+<div id="edit-task">
     <?php
-    echo \App\ViewHelpers\TaskHelper::renderTasks($tasks);
+    echo \App\ViewHelpers\EditHelper::renderTask($task);
     ?>
 </div>
-<div id="completed-link">
-    <a href="completed">Show completed tasks</a>
+<div id="home-link">
+    <a href="/">Go back</a>
 </div>
 </div>
 </body>

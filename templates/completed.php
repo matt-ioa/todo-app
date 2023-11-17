@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="container">
-<h1>TODO App</h1>
+<h1>TODO List</h1>
 <h2>Completed Tasks</h2>
 <div id="task-list">
     <?php

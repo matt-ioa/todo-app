@@ -19,9 +19,7 @@ class PDOFactory
         ];
 
         $dsn = "mysql:host=$host;dbname=$db";
-        $db = new PDO($dsn, $user, $password, $options);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        return $db;
+        return new PDO($dsn, $user, $password, $options);
     }
 
 }

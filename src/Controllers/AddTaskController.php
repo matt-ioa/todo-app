@@ -11,12 +11,11 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\PhpRenderer;
 
-class CompletedTasksAPIController
+class AddTaskController
 {
     private TasksModel $model;
     private PhpRenderer $renderer;
 
-    // Here, the parameter is automatically supplied by the Dependency Injection Container based on the type hint
     public function __construct(TasksModel $model, PhpRenderer $renderer)
     {
         $this->model = $model;
@@ -25,8 +24,16 @@ class CompletedTasksAPIController
 
     public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $tasks = $this->model->getCompletedTasks();
+        $message = $request->getParam('message');
 
-        return $this->renderer->render($response, 'completed.php', ['tasks' => $tasks]);
+        try {
+            $this->model->addTask($message);
+        }
+        catch (\Exception $e) {
+            $error = 'Unable to add task.';
+            return $this->renderer->render($response, 'error.php', ['error' => $error]);
+        }
+
+        return $response->withHeader('Location', '/')->withStatus(301);
     }
 }

@@ -11,19 +11,10 @@
 <body>
 <div id="container">
 <h1>TODO List</h1>
-<form action="/tasks" method="POST">
-    <label for="message">Add task:</label>
-    <input id="message" type="text" name="message">
-    <input type="submit" value="Add">
-</form>
-<div id="task-list">
-    <?php
-    echo \App\ViewHelpers\TaskHelper::renderTasks($tasks);
-    ?>
-</div>
-<div id="completed-link">
-    <a href="completed">Show completed tasks</a>
-</div>
+<h2 class="error">Error</h2>
+<?php
+echo \App\ViewHelpers\ErrorHelper::renderError($error);
+?>
 </div>
 </body>
 </html>

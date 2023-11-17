@@ -11,7 +11,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\PhpRenderer;
 
-class AddTaskAPIController
+class TasksController
 {
     private TasksModel $model;
     private PhpRenderer $renderer;
@@ -25,13 +25,8 @@ class AddTaskAPIController
 
     public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $message = $request->getParam('message');
-        $result = false;
+        $tasks = $this->model->getUncompletedTasks();
 
-        $result = $this->model->addTask($message);
-
-        // Put error handling here
-
-        return $response->withHeader('Location', '/')->withStatus(301);
+        return $this->renderer->render($response, 'index.php', ['tasks' => $tasks]);
     }
 }

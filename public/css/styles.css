@@ -1,8 +1,10 @@
 body {
+    background-color: #eee;
     font-family: 'Source Sans 3', sans-serif;
 }
 
 h1 {
+    margin-top: 0;
     font-size: 3rem;
     color: darkslateblue;
 }
@@ -13,11 +15,16 @@ h2 {
 
 #container {
     display: flex;
+    background-color: #fff;
     flex-direction: column;
     align-items: center;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1rem 6rem;
 }
 
-#task-list {
+#task-list, #edit-task {
     padding: 2rem 0;
 }
 
@@ -29,5 +36,17 @@ h2 {
 
 .done-button {
     margin-left: 1rem;
+    margin-right: 0.2rem;
 }
 
+.save-button {
+    margin-left: 1rem;
+}
+
+#home-link, #completed-link {
+    margin-bottom: 1.5rem;
+}
+
+#buttons {
+    display: flex;
+}

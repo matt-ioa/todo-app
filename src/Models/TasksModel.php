@@ -17,37 +17,31 @@ class TasksModel
         $this->db = $db;
     }
 
-    public function addTask(string $message): bool {
+    public function addTask(string $message): void {
         $query = $this->db->prepare(
             'INSERT INTO `tasks` (`message`) VALUES (:message)'
         );
 
         $query->bindParam(':message', $message);
         $query->execute();
-        return true;
-
     }
 
-    public function markDone(int $id): bool {
+    public function markDone(int $id): void {
         $query = $this->db->prepare(
             'UPDATE `tasks` SET `done` = 1 WHERE `id` = :id'
         );
 
         $query->bindParam(':id', $id);
         $query->execute();
-        return true;
-
     }
 
-    public function delete(int $id): bool {
+    public function delete(int $id): void {
         $query = $this->db->prepare(
             'DELETE FROM `tasks` WHERE `id` = :id'
         );
 
         $query->bindParam(':id', $id);
         $query->execute();
-        return true;
-
     }
 
     public function getUncompletedTasks(): array
@@ -70,5 +64,26 @@ class TasksModel
         return $query->fetchAll();
     }
 
+    public function getTask(int $id): array
+    {
+        $query = $this->db->prepare(
+            'SELECT `id`, `message` FROM tasks WHERE `id` = :id'
+        );
 
+        $query->bindParam(':id', $id);
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function updateMessage(int $id, string $message)
+    {
+        $query = $this->db->prepare(
+            'UPDATE `tasks` SET `message` = :message WHERE `id` = :id'
+        );
+
+        $query->bindParam(':id', $id);
+        $query->bindParam(':message', $message);
+        $query->execute();
+        return $query->fetch();
+    }
 }
