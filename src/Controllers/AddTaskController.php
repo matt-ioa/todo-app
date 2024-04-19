@@ -31,7 +31,7 @@ class AddTaskController
         }
         catch (\Exception $e) {
             $error = 'Unable to add task.';
-            return $this->renderer->render($response, 'error.php', ['error' => $error]);
+            return $this->renderer->render($response, 'error.phtml', ['error' => $error]);
         }
 
         return $response->withHeader('Location', '/')->withStatus(301);

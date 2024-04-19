@@ -27,6 +27,6 @@ class TasksController
     {
         $tasks = $this->model->getUncompletedTasks();
 
-        return $this->renderer->render($response, 'index.php', ['tasks' => $tasks]);
+        return $this->renderer->render($response, 'index.phtml', ['tasks' => $tasks]);
     }
 }

@@ -17,9 +17,7 @@
     <input type="submit" value="Add">
 </form>
 <div id="task-list">
-    <?php
-    echo \App\ViewHelpers\TaskHelper::renderTasks($tasks);
-    ?>
+    <?= \App\ViewHelpers\TaskHelper::renderTasks($tasks);?>
 </div>
 <div id="completed-link">
     <a href="completed">Show completed tasks</a>

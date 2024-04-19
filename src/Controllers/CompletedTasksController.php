@@ -27,6 +27,6 @@ class CompletedTasksController
     {
         $tasks = $this->model->getCompletedTasks();
 
-        return $this->renderer->render($response, 'completed.php', ['tasks' => $tasks]);
+        return $this->renderer->render($response, 'completed.phtml', ['tasks' => $tasks]);
     }
 }

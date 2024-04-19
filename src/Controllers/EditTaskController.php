@@ -28,6 +28,6 @@ class EditTaskController
         $method = $request->getParam('_method', $default = 'POST');
         $task = $this->model->getTask($id);
 
-        return $this->renderer->render($response, 'edit.php', ['task' => $task]);
+        return $this->renderer->render($response, 'edit.phtml', ['task' => $task]);
     }
 }
